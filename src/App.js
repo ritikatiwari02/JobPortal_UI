@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+// import NavBar from "./components/Navbar";
+// import HeroSection from "./components/HeroSection";
+// import CardSection from "./components/CardSection";
+// import Footer from "./components/Footer";
+// import Testomonial from "./components/Testomonial";
+// import CustomerForm from "./components/CustomerForm";
+
+
+// const App = () => {
+//   return (
+//     <div>
+//       <NavBar />
+//       <HeroSection />
+//       <CardSection />
+//       <Testomonial/>
+//       <Footer />
+//       <CustomerForm/>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+
+import React, { useState } from 'react';
+import './index.css';
+import CustomerForm from './components/CustomerForm';
+import NavBar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import CardSection from "./components/CardSection";
+import Footer from "./components/Footer";
+import Testomonial from "./components/Testomonial";
+
 
 function App() {
+  const [isFormOpen, setFormOpen] = useState(false);
+
+  const handleFormToggle = () => {
+    setFormOpen(!isFormOpen);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+       <HeroSection />
+       <CardSection />
+       <button onClick={handleFormToggle} className="CustomerButton" >Add Customer Details</button>
+      <CustomerForm isOpen={isFormOpen} onClose={handleFormToggle} />
+
+       <Testomonial/>
+       <Footer />
+     
+      
     </div>
   );
 }
 
 export default App;
+
+
+
